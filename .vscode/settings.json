@@ -1,0 +1,6 @@
+{
+    "java.project.sourcePaths": [
+        "provided-code",
+        "src/main/java/gr/aegean/icsd/news"
+    ]
+}
