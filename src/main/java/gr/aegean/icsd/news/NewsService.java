@@ -35,6 +35,11 @@ public class NewsService {
         // Προσθέστε στη results μόνο όσες είναι PUBLISHED και ο τίτλος τους,
         // σε πεζά, περιέχει το normalizedKeyword.
         // Χρησιμοποιήστε ως παράδειγμα τη getPublishedNews().
+         for (News item : news) {
+            if ((item.getStatus() == NewsStatus.PUBLISHED) && (item.getTitle().toLowerCase(Locale.ROOT).contains(normalizedKeyword))) {
+                results.add(item);
+            }
+        }
 
         return results;
     }

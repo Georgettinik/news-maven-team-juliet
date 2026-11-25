@@ -5,23 +5,23 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.Properties;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class Main {
     public static void main(String[] args) {
-        // Βήμα 3: Αφαιρέστε το σχόλιο στην επόμενη γραμμή για ανάγνωση του resource.
          System.out.println("APP_NAME=" + readAppName());
 
         NewsService service = new NewsService(SampleData.createNews());
 
         // Πρώτη εκτέλεση πριν από την προσθήκη της βιβλιοθήκης JSON.
-        System.out.println("Published news:");
+        printJson("Published news", service.getPublishedNews());
         for (News item : service.getPublishedNews()) {
             System.out.println(item.getId() + " - " + item.getTitle());
         }
-
-        // Βήμα 5: αντικαταστήστε την παραπάνω εμφάνιση με την έκδοση JSON.
-        // Βήμα 6: προσθέστε τα σενάρια αναζήτησης που δίνονται στον οδηγό.
-    }
+  printJson("Search: TECHNOLOGY", service.searchPublishedByTitle("TECHNOLOGY"));
+printJson("Search: volcano", service.searchPublishedByTitle("volcano")); 
+ }
 
     // Έτοιμη ανάγνωση ρυθμίσεων από resource του classpath.
     private static String readAppName() {
@@ -40,4 +40,9 @@ public class Main {
         }
         return appName;
     }
+    private static void printJson(String label, Object value) {
+    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    System.out.println(label + ":");
+    System.out.println(gson.toJson(value));
+}
 }

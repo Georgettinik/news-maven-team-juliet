@@ -20,7 +20,10 @@ public class SampleData {
                 List.of(Category.SCIENCE, Category.ENVIRONMENT), NewsStatus.UNDER_REVIEW),
             new News(105, "Technology conference in Athens",
                 "A conference on software and digital services.",
-                List.of(Category.TECHNOLOGY, Category.SCIENCE), NewsStatus.PUBLISHED)
-        );
+                List.of(Category.TECHNOLOGY, Category.SCIENCE), NewsStatus.PUBLISHED),
+            new News(106, "Technology workshop in Samos",
+                "Students build a news project with Maven.",
+                List.of(Category.TECHNOLOGY), NewsStatus.PUBLISHED)
+            );
     }
 }
